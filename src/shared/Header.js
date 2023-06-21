@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import laptop from "../assets/images/laptop-1.jpg"
+import { CONTEXT } from '../context/MainContext'
 
 const Header = () => {
+
+  const {user}=useContext(CONTEXT)
+
   return (
     <div>
        <div className="navbar bg-base-100">
