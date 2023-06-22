@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 
 const CategoryProduct = () => {
 
@@ -29,7 +29,11 @@ const CategoryProduct = () => {
              </div>
              
              </div>
+            
              </div>
+          <div className='mr-48 mt-2 '>
+          <button className='btn btn-primary '> <Link to={`/bookingform/${d._id}`}>Book Now</Link> </button>
+          </div>
              </div>
             })
         }

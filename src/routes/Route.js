@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import SignUp from "../authentication/SignUp";
 import Login from "../authentication/Login";
 import CategoryProduct from "../components/CategoryProduct";
+import BookingForm from "../components/BookingForm";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,13 @@ export const router = createBrowserRouter([
                   return  fetch(`http://localhost:5000/api/v1/products/get-product/${params.category_name}`)
                 }
             },
+            {
+                path: "/bookingform/:id",
+                element: <BookingForm></BookingForm>,
+                loader: ({params})=>{
+                    return  fetch(`http://localhost:5000/api/v1/products/get-single-product/${params.id}`)
+                  }
+            }
         ]
     }
 ])
