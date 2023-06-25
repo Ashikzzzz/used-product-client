@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import {  useLoaderData } from 'react-router-dom'
+import {  useLoaderData, useNavigate } from 'react-router-dom'
 import { CONTEXT } from '../context/MainContext'
 
 const BookingForm = () => {
     const data = useLoaderData()
     const {user}=useContext(CONTEXT)
+    const navigate = useNavigate()
    
   const handleBookingForm=(event)=>{
     event.preventDefault()
@@ -17,6 +18,7 @@ const BookingForm = () => {
     const location = form.location.value;
     const condition= data?.data?.condition;
     const usedYear = data?.data?.usedYear
+   
 
 const bookingData ={
   email,
@@ -26,7 +28,8 @@ const bookingData ={
   contact,
   location,
   condition,
-  usedYear
+  usedYear,
+  
 }
 
 fetch("http://localhost:5000/api/v1/booking/product-booking",{
@@ -38,7 +41,15 @@ fetch("http://localhost:5000/api/v1/booking/product-booking",{
 })
 .then(res => res.json())
 .then(data => {
-  console.log(data?.data)
+  console.log(data)
+  if(data?.status === "success"){
+    alert(data.massage)
+  }
+
+  if(data?.data === "already booked"){
+    alert("product is already booked")
+  }
+  // navigate("/")
 })
   }
 

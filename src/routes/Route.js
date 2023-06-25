@@ -5,6 +5,8 @@ import SignUp from "../authentication/SignUp";
 import Login from "../authentication/Login";
 import CategoryProduct from "../components/CategoryProduct";
 import BookingForm from "../components/BookingForm";
+import MyOrders from "../Dashboard/MyOrders";
+import AddProduct from "../Dashboard/AddProduct";
 
 export const router = createBrowserRouter([
     {
@@ -36,7 +38,17 @@ export const router = createBrowserRouter([
                 loader: ({params})=>{
                     return  fetch(`http://localhost:5000/api/v1/products/get-single-product/${params.id}`)
                   }
+            },
+            {
+                path: "/myorders",
+                element : <MyOrders></MyOrders>
+            },
+            {
+                path: "/addProduct",
+                element : <AddProduct></AddProduct>
             }
         ]
-    }
+        
+    },
+    
 ])

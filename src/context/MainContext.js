@@ -19,7 +19,7 @@ useEffect(()=>{
         console.log(data?.data)
        setUser(data?.data)
     })
-},[])
+},[user?.email])
 
     const authInfo={
         user,
