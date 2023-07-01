@@ -7,6 +7,7 @@ import CategoryProduct from "../components/CategoryProduct";
 import BookingForm from "../components/BookingForm";
 import MyOrders from "../Dashboard/MyOrders";
 import AddProduct from "../Dashboard/AddProduct";
+import AllBuyer from "../Dashboard/AllBuyer";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path: "/addProduct",
                 element : <AddProduct></AddProduct>
+            },
+            {
+                path: "/allbuyer",
+                element : <AllBuyer></AllBuyer>
             }
         ]
         

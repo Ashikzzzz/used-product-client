@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import laptop from "../assets/images/laptop-1.jpg"
 import { CONTEXT } from '../context/MainContext'
+import Loader from '../loader/Loader'
 
 const Header = () => {
 
@@ -12,6 +13,10 @@ const Header = () => {
     localStorage.removeItem("token");
     
     navigate("/login");
+}
+
+if(loading){
+  return <Loader></Loader>
 }
 
   return (
@@ -40,7 +45,7 @@ const Header = () => {
             {
                 user?.role==="admin" &&
               <>
-                <li><Link>All Buyer</Link></li>
+                <li><Link to="/allbuyer">All Buyer</Link></li>
                 <li><Link>All Seller</Link></li>
               </>
               
@@ -81,7 +86,7 @@ const Header = () => {
             {
                 user?.role==="admin" &&
               <>
-                <li><Link>All Buyer</Link></li>
+                <li><Link to="/allbuyer">All Buyer</Link></li>
                 <li><Link>All Seller</Link></li>
               </>
               

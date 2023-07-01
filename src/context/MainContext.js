@@ -18,6 +18,7 @@ useEffect(()=>{
     .then(data => {
         console.log(data?.data)
        setUser(data?.data)
+       setLoading(false)
     })
 },[user?.email])
 
