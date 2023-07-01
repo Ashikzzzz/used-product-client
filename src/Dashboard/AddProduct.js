@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react'
 import animation from "../assets/animation/49328-packaging.json"
 import Lottie from 'lottie-react';
 import { CONTEXT } from '../context/MainContext'
+import { useNavigate } from 'react-router-dom';
 
 
 const imgHostKey = process.env.REACT_APP_Imgbb_key;
 
 const AddProduct = () => {
+  const navigate = useNavigate()
   const [productURL,setProductURL]=useState()
   const {user}= useContext(CONTEXT)
 
@@ -52,7 +54,12 @@ const AddProduct = () => {
       .then(data => {
         console.log(data?.data)
         if(data?.status === "success"){
+          alert(data?.massage)
           e.target.reset()
+          navigate("/myproduct")
+        }
+        else{
+          alert("Already Created")
         }
       })
 

@@ -15,9 +15,9 @@ const Header = () => {
     navigate("/login");
 }
 
-if(loading){
-  return <Loader></Loader>
-}
+// if(loading){
+//   return <Loader></Loader>
+// }
 
   return (
     <div>
@@ -38,7 +38,7 @@ if(loading){
                 user?.role==="seller" &&
                <>
                 <li><Link to="/addProduct">Add a Product</Link></li>
-                <li><Link>My Products</Link></li>
+                <li><Link to="/myproduct">My Products</Link></li>
                </>
               
             }
@@ -79,7 +79,7 @@ if(loading){
                 user?.role==="seller" &&
                <>
                 <li><Link to="/addProduct">Add a Product</Link></li>
-                <li><Link>My Products</Link></li>
+                <li><Link to="/myproduct">My Products</Link></li>
                </>
               
             }
