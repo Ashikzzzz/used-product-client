@@ -12,6 +12,7 @@ import MyProduct from "../Dashboard/MyProduct";
 import Advertised from "../components/Advertised";
 import AllSeller from "../Dashboard/AllSeller";
 
+
 export const router = createBrowserRouter([
     {
         path:"/",
@@ -66,7 +67,8 @@ export const router = createBrowserRouter([
             {
                 path: "/allseller",
                 element : <AllSeller></AllSeller>
-            }
+            },
+           
         ]
         
     },

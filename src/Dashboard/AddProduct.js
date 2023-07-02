@@ -15,7 +15,6 @@ const AddProduct = () => {
   const handleAddProduct =(e)=>{
     e.preventDefault();
 
-
     const form = e.target;
     const productName = form.productName.value;
     const productPrice = form.productPrice.value;

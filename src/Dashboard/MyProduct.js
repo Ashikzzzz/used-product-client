@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useQuery } from 'react-query';
 import Loader from '../loader/Loader'
 import { CONTEXT } from '../context/MainContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MyProduct = () => {
 const {user}=useContext(CONTEXT)
@@ -15,7 +15,7 @@ const navigate = useNavigate()
             return data
         }
     });
-
+// delete product ---------------------------
     const handleProductDelete = (id) => {
         fetch(`http://localhost:5000/api/v1/product/delete-product/${id}`, {
             method: 'DELETE'
@@ -29,6 +29,8 @@ const navigate = useNavigate()
                 }
             });
     }
+
+// advertise product ------------------------------------
 
 const handleAdvertisedProduct = (product)=>{
     console.log(product)
@@ -80,6 +82,7 @@ const handleAdvertisedProduct = (product)=>{
                             <button
                                onClick={() => handleProductDelete(product._id)}
                                 className="btn btn-primary btn-sm">Delete</button>
+                         
                         </div>
                     </div>
                 </div>

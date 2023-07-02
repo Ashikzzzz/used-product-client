@@ -15,9 +15,9 @@ const Header = () => {
     navigate("/login");
 }
 
-// if(loading){
-//   return <Loader></Loader>
-// }
+if(loading){
+  return <Loader></Loader>
+}
 
   return (
     <div>
