@@ -44,6 +44,7 @@ fetch("http://localhost:5000/api/v1/booking/product-booking",{
   console.log(data)
   if(data?.status === "success"){
     alert(data.massage)
+    navigate("/myorders")
   }
 
   if(data?.data === "already booked"){

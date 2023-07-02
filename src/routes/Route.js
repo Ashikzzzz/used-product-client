@@ -9,6 +9,8 @@ import MyOrders from "../Dashboard/MyOrders";
 import AddProduct from "../Dashboard/AddProduct";
 import AllBuyer from "../Dashboard/AllBuyer";
 import MyProduct from "../Dashboard/MyProduct";
+import Advertised from "../components/Advertised";
+import AllSeller from "../Dashboard/AllSeller";
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +58,14 @@ export const router = createBrowserRouter([
             {
                 path: "/myproduct",
                 element : <MyProduct></MyProduct>
+            },
+            {
+                path: "/advertised",
+                element : <Advertised></Advertised>
+            },
+            {
+                path: "/allseller",
+                element : <AllSeller></AllSeller>
             }
         ]
         

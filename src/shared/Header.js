@@ -46,7 +46,7 @@ const Header = () => {
                 user?.role==="admin" &&
               <>
                 <li><Link to="/allbuyer">All Buyer</Link></li>
-                <li><Link>All Seller</Link></li>
+                <li><Link to="/allseller">All Seller</Link></li>
               </>
               
             }
@@ -66,7 +66,7 @@ const Header = () => {
         }
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <Link className="btn btn-ghost normal-case text-xl" to="/">Used Product</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
   <ul className="menu menu-horizontal px-1">
@@ -87,7 +87,7 @@ const Header = () => {
                 user?.role==="admin" &&
               <>
                 <li><Link to="/allbuyer">All Buyer</Link></li>
-                <li><Link>All Seller</Link></li>
+                <li><Link to="/allseller">All Seller</Link></li>
               </>
               
             }
@@ -106,11 +106,7 @@ const Header = () => {
         }
     </ul>
   </div>
-  <div className="avatar navbar-end">
-  <div className="w-12 rounded">
-    <img className='w-12 rounded' src={laptop}/>
-  </div>
-</div>
+  
 </div>
     </div>
   )

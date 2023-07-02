@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CONTEXT } from '../context/MainContext'
+import Loader from '../loader/Loader'
 
 const MyOrders = () => {
-const {user}= useContext(CONTEXT)
+const {user,loading}= useContext(CONTEXT)
 const [bookings,setBookings]=useState([])
 // console.log(bookings)
 
@@ -14,6 +15,10 @@ useEffect(()=>{
         setBookings(data?.data)
     })
 },[user?.email])
+
+if(loading){
+  return <Loader></Loader>
+}
 
   return (
     <div>

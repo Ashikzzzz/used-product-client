@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import animation from "../assets/animation/44377-laptop-animation.json"
 import Lottie from 'lottie-react';
 import laptop from "../assets/images/laptop-1.jpg"
 import dell from "../assets/images/dell.jpg"
 import hp from "../assets/images/hp.jpg"
 import { Link } from 'react-router-dom';
+import { CONTEXT } from '../context/MainContext';
+import Loader from '../loader/Loader';
 
 const Categories = () => {
-
+const {loading}=useContext(CONTEXT)
   const [productNames,setProductNames]=useState([])
 
   useEffect(()=>{
@@ -18,6 +20,10 @@ const Categories = () => {
     setProductNames(data?.data)
   })
   },[])
+
+  if(loading){
+    return <Loader></Loader>
+  }
 
   return (
     <div>

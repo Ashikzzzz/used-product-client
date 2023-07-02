@@ -1,17 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useQuery } from 'react-query';
+import { CONTEXT } from '../context/MainContext';
+import Loader from '../loader/Loader';
 
 const AllBuyer = () => {
+const {loading} =useContext(CONTEXT)
+  const { data: allbuyers = [], isLoading, refetch } = useQuery({
+    queryKey: ['allbuyers'],
+    queryFn: async () => {
+        const res = await fetch("http://localhost:5000/api/v1/users/allbuyer")
+        const data = await res.json();
+        return data
+    }
+});
 
-    const [buyers,setBuyers]= useState([])
 
-    useEffect(()=>{
-        fetch("http://localhost:5000/api/v1/users/allbuyer")
-        .then(res => res.json())
-        .then(data => {
-            console.log(data?.data)
-            setBuyers(data?.data)
-        })
-    },[])
+const handleDeleteBuyer = (id) =>{
+  fetch(`http://localhost:5000/api/v1/users/allbuyer/${id}`, {
+    method: 'DELETE'
+})
+    .then(res => res.json())
+    .then(data => {
+        console.log(data, ' deleted');
+        if(data?.status === "Buyer delete  successful"){
+          alert(data?.massage)
+          refetch()
+      }
+    })
+}
+
+if(loading){
+  return <Loader></Loader>
+}
+
 
 
   return (
@@ -31,14 +52,14 @@ const AllBuyer = () => {
     </thead>
     <tbody>
     {
-        buyers?.map((buyer,i) =>{
+        allbuyers?.data?.map((buyer,i) =>{
             return  <tr>
             <th>{i+1}</th>
             <td>{buyer?.name}</td>
             <td>{buyer?.email}</td>
             <td>{buyer?.role}</td>
             <th>
-                <button className="btn btn-accent btn-xs">Delete</button>
+                <button onClick={() => handleDeleteBuyer (buyer._id)} className="btn btn-accent btn-xs">Delete</button>
             </th>
           </tr>
         })
@@ -52,3 +73,4 @@ const AllBuyer = () => {
 }
 
 export default AllBuyer
+

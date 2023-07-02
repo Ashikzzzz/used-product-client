@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import laptop1 from "../assets/images/laptop-1.jpg"
+import { CONTEXT } from '../context/MainContext'
+import Loader from '../loader/Loader'
 
 
 const Banner = () => {
+
+const {loading}=useContext(CONTEXT)
+
+if(loading){
+  return <Loader></Loader>
+}
+
   return (
     <div>
         <div className="hero min-h-screen ">

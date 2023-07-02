@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import { useQuery } from 'react-query';
 import Loader from '../loader/Loader'
 import { CONTEXT } from '../context/MainContext';
+import { useNavigate } from 'react-router-dom';
 
 const MyProduct = () => {
 const {user}=useContext(CONTEXT)
-
+const navigate = useNavigate()
     const { data: myProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['myProducts'],
         queryFn: async () => {
@@ -41,6 +42,9 @@ const handleAdvertisedProduct = (product)=>{
     .then(res => res.json())
     .then(data=> {
         console.log(data)
+        if(data?.status === "success"){
+            navigate("/advertised")
+        }
     })
 
 }
@@ -51,11 +55,10 @@ const handleAdvertisedProduct = (product)=>{
       }
 
   return (
-    <div>
+    <div className='grid lg:grid-cols-3 grid-cols-1'>
          {
             myProducts?.data?.map(product => {
                 return     <div >
-                    <div className='grid lg:grid-cols-2 grid-cols-1 '>
                     <div className="card w-80 mt-5 bg-base-300 shadow-xl">
                     <div className="card-body">
                         <img src={product?.productURL}></img>
@@ -80,7 +83,6 @@ const handleAdvertisedProduct = (product)=>{
                         </div>
                     </div>
                 </div>
-                    </div>
                 
             </div >
             })
