@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CONTEXT } from '../context/MainContext'
 import Loader from '../loader/Loader'
+import { Link } from 'react-router-dom'
 
 const MyOrders = () => {
 const {user,loading}= useContext(CONTEXT)
@@ -58,7 +59,7 @@ if(loading){
         <td>{booking?.condition}</td>
         <td>{booking?.usedYear}</td>
         <th>
-          <button className="btn btn-accent btn-xs">Pay</button>
+          <Link to={`/booking-a-product/${booking._id}`}><button className="btn btn-accent btn-xs">ChackOut</button></Link>
         </th>
       </tr>
     })

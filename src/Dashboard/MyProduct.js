@@ -18,7 +18,11 @@ const navigate = useNavigate()
 // delete product ---------------------------
     const handleProductDelete = (id) => {
         fetch(`http://localhost:5000/api/v1/product/delete-product/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                "content-type": "application/json",
+                authorization: `bearer ${localStorage.getItem("token")}`
+            }
         })
             .then(res => res.json())
             .then(data => {

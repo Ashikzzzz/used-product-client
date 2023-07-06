@@ -16,7 +16,11 @@ const AllSeller = () => {
 
     const handleDeleteSeller = (id) =>{
         fetch(`http://localhost:5000/api/v1/users/allseller/${id}`, {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("token")}`
+        }
       })
           .then(res => res.json())
           .then(data => {

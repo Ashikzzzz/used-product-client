@@ -45,8 +45,10 @@ const AddProduct = () => {
       fetch("http://localhost:5000/api/v1/product/add-product",{
         method: "POST",
         headers : {
-          "content-type": "application/json"
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("token")}`
         },
+        
         body: JSON.stringify(addProductData)
       })
       .then(res => res.json())

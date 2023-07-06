@@ -11,6 +11,7 @@ import AllBuyer from "../Dashboard/AllBuyer";
 import MyProduct from "../Dashboard/MyProduct";
 import Advertised from "../components/Advertised";
 import AllSeller from "../Dashboard/AllSeller";
+import Chackout from "../Dashboard/Chackout";
 
 
 export const router = createBrowserRouter([
@@ -67,6 +68,13 @@ export const router = createBrowserRouter([
             {
                 path: "/allseller",
                 element : <AllSeller></AllSeller>
+            },
+            {
+                path: "/booking-a-product/:id",
+                element: <Chackout></Chackout>,
+                loader: ({params})=>{
+                    return  fetch(`http://localhost:5000/api/v1/booking/booking-a-product/${params.id}`)
+                  }
             },
            
         ]
